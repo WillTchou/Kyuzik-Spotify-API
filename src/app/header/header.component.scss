@@ -1,0 +1,34 @@
+.filter-wrapper,
+.keyword-wrapper{
+    display:flex;
+    justify-content: center;
+}
+
+.filter-wrapper{
+    min-height: 100%;
+    flex-flow: column-wrap;
+    position: relative;
+}
+
+.keyword-wrapper{
+    width: 100%;
+    position: relative;
+}
+
+#keyword:focus{
+    border-color: rgb(144,238,144);
+}
+
+#keyword-button{
+    position: absolute;
+    right:26%;
+    top:50%;
+    transform: translateY(-50%);
+}
+
+.album-name{
+    display:inline-block;
+    position: absolute;
+}
+
+

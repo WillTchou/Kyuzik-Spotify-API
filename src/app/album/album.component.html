@@ -1,0 +1,14 @@
+<h1 class="text-center">Latest Releases</h1>
+<div class="liste-albums">
+    <div class="card" *ngFor="let item of nouveauxSons;" (click)="onTracks(item.id)">
+        <img class="card-img-top" [src]="item.images[1].url" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">{{item.name}}</h5>
+          <span class="badge badge-info">Artist: </span>
+          <span style="display: block; margin:5px" class="badge badge-success" *ngFor="let artist of item.artists">
+              {{artist.name}}
+          </span>
+        </div>
+    </div>
+</div>
+
