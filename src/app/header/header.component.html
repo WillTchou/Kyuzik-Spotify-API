@@ -13,8 +13,8 @@
             <div class="keyword-wrapper">
                 <input [formControl]="queryField" type="text" id="keyword" placeholder="Recherche d'albums..." autofocus/>
              </div>
-           <ul class="filter-select">
-             <li *ngFor="let result of results" class="filter-select-list"><img [src]=result.image[2].url alt="" width="64" height="64"><p class="album-name">
+           <ul class="filter-selec">
+             <li *ngFor="let result of results; index as i" class="filter-select-list" (click)="onAlbum(i)"><img [src]="result.images[2].url" alt="" width="64" height="64"><p class="album-name">
                  {{result.name}}
                 </p>
              <span class="tags">{{result.release_date}}</span>
