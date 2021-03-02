@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { SpotifyService } from '../services/spotify.service';
 import {Howl, Howler} from 'howler';
+import {Music} from '../models/music.model';
+
 
 @Component({
   selector: 'app-tracks',
@@ -23,9 +25,7 @@ export class TracksComponent implements OnInit {
   id:string;
   nombre:number;
   sons:any[];
-  previews:string[]=[];
   playlist:Howl[]=[];
-  isPause=true;
   
 
   ngOnInit(): void {
@@ -41,15 +41,9 @@ export class TracksComponent implements OnInit {
         this.nombre=data.total_tracks;
         this.sons=data.tracks.items;
         this.sons.forEach(son=>{         
-          this.playlist.push(new Howl({
-            src:[son.preview_url!=null? son.preview_url:""],
-            format:['mp3'],
-            html5: true,
-            autoplay:false,
-            volume: 0.5,
-          }));
+          this.playlist.push(new Music(son.preview_url!=null? son.preview_url:""));
         });
-   });
+      });
   }
 
   duree(ms:number): string {
@@ -58,14 +52,16 @@ export class TracksComponent implements OnInit {
     return min+":"+sec;
   }
 
-  onPlay(i:number){
-    this.playlist[i].play();
-    this.isPause=false;
+  toPlay(i:number){
+    this.playlist[i].onPlay();
   }
 
-  onPause(i:number){
-    this.playlist[i].pause();
-    this.isPause=true;
+  toPause(i:number){
+    this.playlist[i].onPause()
+  }
+
+  isPause(i:number){
+    return this.playlist[i].getState();
   }
 
 }
