@@ -18,7 +18,7 @@ const appRoutes:Routes=[
   { path: 'album', component: AlbumComponent },
   { path: 'album/view/:id', component: TracksComponent },
   { path: '', component: AlbumComponent,pathMatch:'full' },
-  { path: '**', redirectTo:'musics' }
+  { path: '**', redirectTo:'album' }
 ];
 
 @NgModule({
